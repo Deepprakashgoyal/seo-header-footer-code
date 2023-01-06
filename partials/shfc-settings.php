@@ -12,20 +12,20 @@ if (!current_user_can('manage_options')) {
 		<?php settings_fields('shfc_plugin_options'); ?>
 		<table class="form-table">
 			<tr>
-				<th>Header Code <p>Insert your global header code here:</p></th>
+				<th>Global Header Code <p>This code will Insert above &lt;/head&gt;  tag.</p></th>
 				<td>
 					<textarea name="shfc_global_code[global_header_code]" id="" rows="5" 	placeholder="Enter Your code here:"><?php if (isset($shfc_option_values['global_header_code'])) echo esc_textarea($shfc_option_values['global_header_code']); ?></textarea>
 				</td>
 			</tr>
 
 			<tr>
-				<th>Body Code <p>Insert your global body code here:</p></th>
+				<th>Global Body Code <p>This code will Insert after &lt;body&gt;  tag.</p></th>
 				<td><textarea name="shfc_global_code[global_body_code]" id="" rows="5" 	placeholder="Enter Your code here:"><?php if (isset($shfc_option_values['global_body_code'])) echo esc_textarea($shfc_option_values['global_body_code']); ?></textarea>
 				</td>
 			</tr>
 
 			<tr>
-				<th>Footer Code<p>Insert your global footer code here:</p></th>
+				<th>Global Footer Code<p>This code will Insert above &lt;/body&gt;  tag.</p></th>
 				<td><textarea name="shfc_global_code[global_footer_code]" id="" rows="5" 	placeholder="Enter Your code here:"><?php if (isset($shfc_option_values['global_footer_code'])) echo esc_textarea($shfc_option_values['global_footer_code']); ?></textarea>
 				</td>
 			</tr>
