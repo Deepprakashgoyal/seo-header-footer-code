@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin name: SEO Header Footer Code
+ * Description: This is a plugin to add custom code in header, footer, body for posts, pages or global.
+ * Tags: Header Footer code, SEO code, Header, footer, body, google analytics code, inject code
  * Author: Deep Goyal
- * Plugin URI: https://wpexpertdeep.com
+ * Plugin URI: https://wordpressbrain.com
  * Author URI: https://wpexpertdeep.com
- * Description: This is a plugin to add custom code in header, footer, body for posts, pages.
  * Tested up to: 6.1
  * version: 1.0
  * License: GPL 3.0, @see http://www.gnu.org/licenses/gpl-3.0.html
@@ -95,11 +96,15 @@ function shfc_post_meta_field_callback($post){
     wp_nonce_field( 'shfc_custom_code_nonce', 'shfc_custom_code_nonce' );
 
     $shfc_single_meta = get_post_meta( $post->ID, 'shfc_single_code', true );
-    $shfc_header_code = array_key_exists("header_code", $shfc_single_meta) ? $shfc_single_meta['header_code'] : ''; 
+    if(!empty($shfc_single_meta)){
 
-    $shfc_body_code = array_key_exists("body_code", $shfc_single_meta) ? $shfc_single_meta['body_code'] : ''; 
+	    $shfc_header_code = array_key_exists("header_code", $shfc_single_meta) ? $shfc_single_meta['header_code'] : ''; 
 
-    $shfc_footer_code = array_key_exists("footer_code", $shfc_single_meta) ? $shfc_single_meta['footer_code'] : ''; 
+	    $shfc_body_code = array_key_exists("body_code", $shfc_single_meta) ? $shfc_single_meta['body_code'] : ''; 
+
+	    $shfc_footer_code = array_key_exists("footer_code", $shfc_single_meta) ? $shfc_single_meta['footer_code'] : ''; 
+
+	}
 
     // print_r($shfc_single_meta);
 
@@ -184,9 +189,12 @@ function shfc_inject_code_in_header(){
 	$post_id = get_the_ID();
 	$shfc_value = get_post_meta( $post_id, 'shfc_single_code', true );
 
-	if(array_key_exists('header_code', $shfc_value)){
-		echo $shfc_value['header_code'];
+	if(!empty($shfc_value)){
+		if(array_key_exists('header_code', $shfc_value)){
+			echo $shfc_value['header_code'];
+		}
 	}
+	
 
 }
 
@@ -208,8 +216,10 @@ function shfc_inject_code_in_footer(){
 	$post_id = get_the_ID();
 	$shfc_value = get_post_meta( $post_id, 'shfc_single_code', true );
 
-	if(array_key_exists('footer_code', $shfc_value)){
-		echo $shfc_value['footer_code'];
+	if(!empty($shfc_value)){
+		if(array_key_exists('footer_code', $shfc_value)){
+			echo $shfc_value['footer_code'];
+		}
 	}
 }
 
@@ -230,7 +240,9 @@ function shfc_inject_code_after_body(){
 	$post_id = get_the_ID();
 	$shfc_value = get_post_meta( $post_id, 'shfc_single_code', true );
 
-	if(array_key_exists('body_code', $shfc_value)){
-		echo $shfc_value['body_code'];
+	if(!empty($shfc_value)){
+		if(array_key_exists('body_code', $shfc_value)){
+			echo $shfc_value['body_code'];
+		}
 	}
 }
