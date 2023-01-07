@@ -20,12 +20,12 @@ Is this plugin customizable?
 No,
 
  == Screenshots == 
-Include some screenshots of your plugin in action.
+screenshot1.jpg
 
  == Changelog == 
 1.0
 Initial release
-s
+
 
  == Credits == 
 Plugin Author: Deep Goyal

@@ -96,6 +96,9 @@ function shfc_post_meta_field_callback($post){
     wp_nonce_field( 'shfc_custom_code_nonce', 'shfc_custom_code_nonce' );
 
     $shfc_single_meta = get_post_meta( $post->ID, 'shfc_single_code', true );
+    $shfc_header_code = '';
+    $shfc_body_code = '';
+    $shfc_footer_code = '';
     if(!empty($shfc_single_meta)){
 
 	    $shfc_header_code = array_key_exists("header_code", $shfc_single_meta) ? $shfc_single_meta['header_code'] : ''; 
